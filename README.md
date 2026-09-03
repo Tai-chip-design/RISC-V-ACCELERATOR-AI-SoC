@@ -191,10 +191,10 @@ vlog -sv rtl/accelerator/pe.v rtl/accelerator/pe_array.sv tb/accelerator/tb_pe_a
 vsim -c work.tb_pe_array -do "run -all; quit"
 ```
 ## Tool
-Verilog
-SystemVerilog
-Modelsim
-Linux
+- Verilog
+- SystemVerilog
+- Modelsim
+- Linux
 ## Author's note
 
 This was built as a personal project to understand RISC-V instruction encoding and INT8 accelerator design from first principles, rather than by integrating existing IP. Feedback and questions welcome.
