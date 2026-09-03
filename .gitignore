@@ -1,0 +1,25 @@
+# ModelSim / Questa
+sim/work/
+sim/*.wlf
+sim/transcript
+*.wlf
+transcript
+
+# Compiled simulation libraries
+work/
+*_lib*/
+*.qdb
+*.qpg
+*.qtl
+*.vo
+
+# OS / editor
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# Temporary files
+*.log
+*.tmp
