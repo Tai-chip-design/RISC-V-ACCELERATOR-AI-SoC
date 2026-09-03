@@ -117,7 +117,51 @@ These are natural next steps rather than gaps in the core design work.
 
 ## Repository structure
 
-RISC-V-ACCELERATOR-AI-SoC/ │ ├── rtl/ │ │ │ ├── accelerator/ │ │ ├── accel_controller.v │ │ ├── accel_top.sv │ │ ├── activation_buffer.sv │ │ ├── pe.v │ │ ├── pe_array.sv │ │ ├── requantize.v │ │ └── weight_buffer.sv │ │ │ ├── cpu/ │ │ ├── alu.v │ │ ├── control_unit.v │ │ ├── imm_gen.v │ │ ├── register_file.v │ │ ├── riscv_processor.v │ │ └── top_cpu.v │ │ │ ├── memory/ │ │ ├── data_memory.v │ │ └── instruction_memory.v │ │ │ └── soc/ │ ├── mmio_bus.sv │ └── soc_top.sv │ ├── tb/ │ │ │ ├── accelerator/ │ │ ├── tb_accel_controller.v │ │ ├── tb_accel_top.v │ │ ├── tb_activation_buffer.v │ │ ├── tb_pe.v │ │ ├── tb_pe_array.sv │ │ ├── tb_requantize.v │ │ └── tb_weight_buffer.v │ │ │ ├── cpu/ │ │ ├── tb_alu.v │ │ ├── tb_control_unit.v │ │ ├── tb_imm_gen.v │ │ ├── tb_register_file.v │ │ ├── tb_riscv_processor.v │ │ └── tb_top_cpu.v │ │ │ └── soc/ │ ├── tb_mmio_bus.sv │ └── tb_soc_top.sv │ ├── sim/ │ └── program.hex │ └── .gitignore
+RISC-V-ACCELERATOR-AI-SoC/
+├── rtl/
+│   ├── cpu/
+│   │   ├── alu.v
+│   │   ├── control_unit.v
+│   │   ├── imm_gen.v
+│   │   ├── register_file.v
+│   │   ├── riscv_processor.v
+│   │   └── top_cpu.v
+│   ├── memory/
+│   │   ├── data_memory.v
+│   │   └── instruction_memory.v
+│   ├── accelerator/
+│   │   ├── pe.v
+│   │   ├── pe_array.sv
+│   │   ├── weight_buffer.sv
+│   │   ├── activation_buffer.sv
+│   │   ├── requantize.v
+│   │   ├── accel_controller.v
+│   │   └── accel_top.sv
+│   └── soc/
+│       ├── mmio_bus.sv
+│       └── soc_top.sv
+├── tb/
+│   ├── cpu/
+│   │   ├── tb_alu.v
+│   │   ├── tb_control_unit.v
+│   │   ├── tb_imm_gen.v
+│   │   ├── tb_register_file.v
+│   │   ├── tb_riscv_processor.v
+│   │   └── tb_top_cpu.v
+│   ├── accelerator/
+│   │   ├── tb_pe.v
+│   │   ├── tb_pe_array.sv
+│   │   ├── tb_weight_buffer.v
+│   │   ├── tb_activation_buffer.v
+│   │   ├── tb_requantize.v
+│   │   ├── tb_accel_controller.v
+│   │   └── tb_accel_top.v
+│   └── soc/
+│       ├── tb_mmio_bus.sv
+│       └── tb_soc_top.sv
+├── sim/
+│   └── program.hex
+└── .gitignore
 
 ## Running the tests
 
