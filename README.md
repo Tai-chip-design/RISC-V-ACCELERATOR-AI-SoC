@@ -10,8 +10,6 @@ This project implements, from scratch, a small SoC (System on Chip) consisting o
 - A **systolic-array INT8 accelerator** (8x8 processing elements) that performs INT8 matrix multiplication, the core operation behind neural network inference.
 - A **memory-mapped bus** that lets the CPU control and communicate with the accelerator using ordinary load/store instructions.
 
-The accelerator was validated against real quantized weights exported from a PyTorch-trained model, confirming the hardware computation matches the software reference bit-for-bit.
-
 ## Why this project
 
 Modern AI inference chips pair a general-purpose control core with a specialized math accelerator. This project is a small-scale, from-first-principles exploration of that pattern: understanding RISC-V instruction encoding well enough to build a CPU by hand, and understanding INT8 quantized inference well enough to design the systolic array that accelerates it.
@@ -119,16 +117,7 @@ These are natural next steps rather than gaps in the core design work.
 
 ## Repository structure
 
-```
-rtl/
-├── cpu/            single-cycle RISC-V CPU modules
-├── memory/         instruction and data memory
-├── accelerator/    PE, systolic array, buffers, requantize, FSM controller
-└── soc/            MMIO bus, top-level SoC integration
-tb/                 testbench for every module above, mirroring rtl/ structure
-sw/model/           PyTorch training + INT8 quantization + export scripts
-docs/               ISA scope, memory map, this architecture description
-```
+RISC-V-ACCELERATOR-AI-SoC/ │ ├── rtl/ │ │ │ ├── accelerator/ │ │ ├── accel_controller.v │ │ ├── accel_top.sv │ │ ├── activation_buffer.sv │ │ ├── pe.v │ │ ├── pe_array.sv │ │ ├── requantize.v │ │ └── weight_buffer.sv │ │ │ ├── cpu/ │ │ ├── alu.v │ │ ├── control_unit.v │ │ ├── imm_gen.v │ │ ├── register_file.v │ │ ├── riscv_processor.v │ │ └── top_cpu.v │ │ │ ├── memory/ │ │ ├── data_memory.v │ │ └── instruction_memory.v │ │ │ └── soc/ │ ├── mmio_bus.sv │ └── soc_top.sv │ ├── tb/ │ │ │ ├── accelerator/ │ │ ├── tb_accel_controller.v │ │ ├── tb_accel_top.v │ │ ├── tb_activation_buffer.v │ │ ├── tb_pe.v │ │ ├── tb_pe_array.sv │ │ ├── tb_requantize.v │ │ └── tb_weight_buffer.v │ │ │ ├── cpu/ │ │ ├── tb_alu.v │ │ ├── tb_control_unit.v │ │ ├── tb_imm_gen.v │ │ ├── tb_register_file.v │ │ ├── tb_riscv_processor.v │ │ └── tb_top_cpu.v │ │ │ └── soc/ │ ├── tb_mmio_bus.sv │ └── tb_soc_top.sv │ ├── sim/ │ └── program.hex │ └── .gitignore
 
 ## Running the tests
 
